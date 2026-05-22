@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Suporte - HelpDesk</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Painel de Controle - HelpDesk</h1>
+        </header>
+        <section class="section-cadastro">
+            <h2>Abrir novo chamado</h2>
+
+            <form action="#" method="POST">
+                <div class="form-grupo">
+                    <label for="">Nome do Usuário:</label>
+                    <input type="text" placeholder="Ex: João Silva">
+                </div>
+
+                <div class="form-grupo linha-fim">
+                    <label for="">E-mail de Contato: </label>
+                    <input type="email" placeholder="joao@empresa.com">
+                </div>
+
+                <div class="form-grupo">
+                    <label for="">Sistema / Sistema Operacional:</label>
+                    <select name="" id="">
+                        <option value="">Windows</option>
+                        <option value="">Linux</option>
+                        <option value="">Sistema Interno</option>
+                        <option value="">Outro</option>
+                    </select>
+                </div>
+
+                <div class="form-grupo linha-fim">
+                    <label for="">Gravidade do Problema:</label>
+                    <select name="" id="">
+                        <option value="">Baixa - Dúvida ou Ajuste</option>
+                        <option value="">Alta - Sistema Parado</option>
+                    </select>
+                </div>
+
+                <div class="form-grupo total">
+                    <label for="">Assunto do Chamado:</label>
+                    <input type="text" placeholder="Resumo direto do problema">
+                </div>
+
+                <div class="form-grupo total">
+                    <label for="">Descrição Detalhada:</label>
+                    <textarea name="" id="" placeholder="Descreva aqui o que aconteceu..."></textarea>
+                </div>
+
+                <div class="acoes-form">
+                    <button type="submit" onclick="enviarChamado()">Enviar Chamado</button>
+                </div>
+            </form>
+
+        </section>
+        <section>
+            <h2>Chamados Ativos</h2>
+            <ul class="lista-chamados">
+                <li class="card-chamado">
+                    <article>
+                        <div class="card-topo">
+                            <span>#001</span>
+                            <strong>Impressora do faturamento não liga</strong>
+                        </div>
+                        <div>
+                            <span>
+                                Por: <strong>Anna Costa</strong> (anna@empresa.com)
+                            </span>
+                            <span>
+                                Sistema: <strong>Windows</strong>
+                            </span>
+                            <span>
+                                Prioridade: <strong style="color: red;">Alta</strong>
+                            </span>
+                        </div>
+                        <p>
+                            A impressora térmiica parou de responder logo após a atualização do sistema de notas
+                            fiscais.
+                        </p>
+                    </article>
+                </li>
+                <li class="card-chamado prioridade-baixa">
+                    <article>
+                        <div>
+                            <span>#002</span>
+                            <strong>Dúvida no acesso ao relatório de metas</strong>
+                        </div>
+                        <div>
+                            <span>
+                                Por: <strong>Carlos Souza</strong> (carlos@empresa.com)
+                            </span>
+                            <span>
+                                Sistema: <strong>Sistema Interno</strong>
+                            </span>
+                            <span>
+                                Prioridade: <strong style="color: green;">Baixa</strong>
+                            </span>
+                        </div>
+                        <p>
+                            Gostaria de saber qual o prazo de atualização dos gráficos do dashboard
+                            finaiceiro
+                        </p>
+                    </article>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

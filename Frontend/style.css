@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.section-cadastro {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px;
+    margin-bottom: 40px;
+}
+
+body {
+    background-color: #979a9e;
+    font-family: Arial;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h1, h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.form-grupo {
+    width: 48%;
+    margin-right: 4%;
+    float: left;
+    margin-bottom: 15px;
+}
+
+.form-grupo.linha-fim {
+    margin-right: 0;
+}
+
+.form-grupo.total {
+    width: 100%;
+    float: none;
+}
+
+.acoes-form {
+    padding-top: 10px;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bb9d9d;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+button[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+}
+
+.lista-chamados {
+    list-style: none;
+}
+
+.card-chamado {
+    background-color: white;
+    border-left: 5px solid #e74c3c;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 8px 8px 0;
+}
+
+.card-chamado.prioridade-baixa {
+    border-left-color: green;
+}
+
+.card-topo {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
