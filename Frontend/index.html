@@ -5,69 +5,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel de Suporte - HelpDesk</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container">
-        <header>
+    <div class="container py-5">
+        <header class="text-center mb-5">
             <h1>Painel de Controle - HelpDesk</h1>
+            <p class="text-muted">Gerenciamento de chamados técnicos</p>
         </header>
-        <section class="section-cadastro">
-            <h2>Abrir novo chamado</h2>
+        <section class="card shadow-sm p-4 mb-5">
+            <h2 class="h4 mb-4">Abrir novo chamado</h2>
 
             <form action="#" method="POST">
-                <div class="form-grupo">
-                    <label for="">Nome do Usuário:</label>
-                    <input type="text" placeholder="Ex: João Silva">
-                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="" class="form-label">Nome do Usuário:</label>
+                        <input type="text" placeholder="Ex: João Silva">
+                    </div>
 
-                <div class="form-grupo linha-fim">
-                    <label for="">E-mail de Contato: </label>
-                    <input type="email" placeholder="joao@empresa.com">
-                </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="" class="form-label">E-mail de Contato: </label>
+                        <input type="email" placeholder="joao@empresa.com">
+                    </div>
 
-                <div class="form-grupo">
-                    <label for="">Sistema / Sistema Operacional:</label>
-                    <select name="" id="">
-                        <option value="">Windows</option>
-                        <option value="">Linux</option>
-                        <option value="">Sistema Interno</option>
-                        <option value="">Outro</option>
-                    </select>
-                </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="" class="form-label">Sistema / Sistema Operacional:</label>
+                        <select name="" id="" class="form-select">
+                            <option value="">Windows</option>
+                            <option value="">Linux</option>
+                            <option value="">Sistema Interno</option>
+                            <option value="">Outro</option>
+                        </select>
+                    </div>
 
-                <div class="form-grupo linha-fim">
-                    <label for="">Gravidade do Problema:</label>
-                    <select name="" id="">
-                        <option value="">Baixa - Dúvida ou Ajuste</option>
-                        <option value="">Alta - Sistema Parado</option>
-                    </select>
-                </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="">Gravidade do Problema:</label>
+                        <select name="" id="">
+                            <option value="">Baixa - Dúvida ou Ajuste</option>
+                            <option value="">Alta - Sistema Parado</option>
+                        </select>
+                    </div>
 
-                <div class="form-grupo total">
-                    <label for="">Assunto do Chamado:</label>
-                    <input type="text" placeholder="Resumo direto do problema">
-                </div>
+                    <div class="col-12 mb-3">
+                        <label for="" class="form-label">Assunto do Chamado:</label>
+                        <input type="text" placeholder="Resumo direto do problema" class="form-control">
+                    </div>
 
-                <div class="form-grupo total">
-                    <label for="">Descrição Detalhada:</label>
-                    <textarea name="" id="" placeholder="Descreva aqui o que aconteceu..."></textarea>
-                </div>
+                    <div class="col-12 mb-4">
+                        <label for="" class="form-label">Descrição Detalhada:</label>
+                        <textarea name="" id="" placeholder="Descreva aqui o que aconteceu..."
+                            class="form-control"></textarea>
+                    </div>
 
-                <div class="acoes-form">
-                    <button type="submit" onclick="enviarChamado()">Enviar Chamado</button>
+                    <div class="col-12">
+                        <button type="submit" onclick="enviarChamado()" class="btn btn-primary">Enviar Chamado</button>
+                    </div>
                 </div>
             </form>
 
         </section>
         <section>
-            <h2>Chamados Ativos</h2>
-            <ul class="lista-chamados">
-                <li class="card-chamado">
-                    <article>
-                        <div class="card-topo">
-                            <span>#001</span>
+            <h2 class="h4 mb-4">Chamados Ativos</h2>
+            <ul class="list-unstyled">
+                <li class="card shadow-sm mb-3">
+                    <article class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-dark">#001</span>
                             <strong>Impressora do faturamento não liga</strong>
                         </div>
                         <div>
@@ -78,19 +83,20 @@
                                 Sistema: <strong>Windows</strong>
                             </span>
                             <span>
-                                Prioridade: <strong style="color: red;">Alta</strong>
+                                Prioridade: <span class="badge bg-danger">Alta</span>
                             </span>
                         </div>
-                        <p>
+                        <p class="mb-0">
                             A impressora térmiica parou de responder logo após a atualização do sistema de notas
                             fiscais.
                         </p>
                     </article>
                 </li>
-                <li class="card-chamado prioridade-baixa">
-                    <article>
-                        <div>
-                            <span>#002</span>
+                <li class="card shadow-sm mb-3">
+                    <article class="card-body">
+                        <div class="d-flex justify-content-between align-items-center
+                        mb-3">
+                            <span class="badge bg-secondary">#002</span>
                             <strong>Dúvida no acesso ao relatório de metas</strong>
                         </div>
                         <div>
@@ -101,10 +107,10 @@
                                 Sistema: <strong>Sistema Interno</strong>
                             </span>
                             <span>
-                                Prioridade: <strong style="color: green;">Baixa</strong>
+                                Prioridade: <span class="badge bg-success">Baixa</span>
                             </span>
                         </div>
-                        <p>
+                        <p class="mb-0">
                             Gostaria de saber qual o prazo de atualização dos gráficos do dashboard
                             finaiceiro
                         </p>
@@ -113,6 +119,7 @@
             </ul>
         </section>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 
