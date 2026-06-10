@@ -6,6 +6,8 @@ const API_URL = 'http://localhost:3000'
 // CARREGAR CHAMADOS DA API
 // ==============================================
 async function carregarChamados() {
+    const lista = document.getElementById('lista-chamados');
+    lista.innerHTML = '<p class="text-muted">Carregando chamados...</p>';
     try {
         const resposta = await fetch(`${API_URL}/chamados`); //espera a resposta HTTP chegar
         const chamados = await resposta.json() //espera converter o corpo para objeto
@@ -46,12 +48,35 @@ function renderizarChamados(chamados) {
                     <span>Prioridade: <span class="badge ${corBadge}">${textoPrioridade}</span></span>
                 </div>
                 <p class="mb-0">${chamado.descricao}</p>
+                <div class="mt-3">
+                    <button onclick="fecharChamado(${chamado.id})" class="btn btn-sm btn-outline-danger">
+                        Fechar Chamado
+                    </button>
+                </div>
             </article>
         `;
 
         lista.appendChild(item)
     })
 
+}
+
+async function fecharChamado(id) {
+    try {
+        const resposta = await fetch(`${API_URL}/chamados/${id}`, {
+            method: 'DELETE',
+        });
+
+        if (!resposta.ok) {
+            alert('Erro ao fechar chamado.');
+            return;
+        }
+
+        await carregarChamados()
+    } catch (erro) {
+        console.error('Erro ao fechar chamado', erro);
+        alert('Não foi possível conectar à API')
+    }
 }
 
 // ==============================================
