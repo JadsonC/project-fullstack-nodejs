@@ -15,6 +15,44 @@ async function carregarChamados() {
     }
 }
 
+// ==============================================
+// RENDERIZAR CHAMADOS NA TELA
+// ==============================================
+function renderizarChamados(chamados) {
+    const lista = document.getElementById('lista-chamados');
+    lista.innerHTML = '' // limpa antes de renderizar
+
+    if (chamados.length == 0) {
+        lista.innerHTML = '<p class="text-muted">Nenhum chamado ativo no momento.</p>'
+        return;
+    }
+
+    chamados.forEach(chamado => {
+        const corBadge = chamado.gravidade === 'alta' ? 'bg-danger' : 'bg-success';
+        const textoPrioridade = chamado.gravidade === 'alta' ? 'Alta' : 'Baixa';
+        const corId = chamado.gravidade === 'alta' ? 'bg-dark' : 'bg-secondary';
+
+        const item = document.createElement('li');
+        item.className = 'card shadow-sm mb-3';
+        item.innerHTML = `
+            <article class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="badge ${corId}">#${String(chamado.id).padStart(3, '0')}</span>
+                    <strong>${chamado.assunto}</strong>
+                </div>
+                <div>
+                    <span>Por: <strong>${chamado.nome}</strong> (${chamado.email})</span>
+                    <span>Sistema: <strong>${chamado.sistema}</strong></span>
+                    <span>Prioridade: <span class="badge ${corBadge}">${textoPrioridade}</span></span>
+                </div>
+                <p class="mb-0">${chamado.descricao}</p>
+            </article>
+        `;
+
+        lista.appendChild(item)
+    })
+
+}
 
 // ==============================================
 // ENVIAR NOVO CHAMADO
