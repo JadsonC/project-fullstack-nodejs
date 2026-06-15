@@ -87,6 +87,30 @@ const form = document.getElementById("form-chamado")
 form.addEventListener('submit', async function (evento) {
     evento.preventDefault(); //impede o comportamento padrão do form (recarregar a página)
 
+    // --VALIDAÇÃO -------------------------------------------
+    const camposObrigatorios = [
+        { id: 'nome', erroId: 'erro-nome' },
+        { id: 'email', erroId: 'erro-email' },
+        { id: 'assunto', erroId: 'erro-assunto' }
+    ]
+
+    let valido = true;
+
+    camposObrigatorios.forEach(({ id, erroId}) => {
+        const campo = document.getElementById(id);
+        const erro = document.getElementById(erroId);
+
+        if(!campo.value.trim()) {
+            erro.style.display = 'block';
+            valido = false;
+        }
+        else {
+            erro.style.display = 'none';
+        }
+    })
+
+    if (!valido) return;
+
     //Lê os valores do formulário
     const dados = {
         nome: document.getElementById('nome').value,
