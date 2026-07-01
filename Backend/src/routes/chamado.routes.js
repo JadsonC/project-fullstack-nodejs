@@ -1,5 +1,6 @@
 import express from 'express';
-import { listar } from '../controllers/chamado.controller.js'
+import { atualizar, buscar, buscarPorId, criar, deletar, listar } from '../controllers/chamado.controller.js'
+import { validarChamado } from '../middlewares/validarChamado.js';
 
 
 // O express.Router() cria um mini-roteador independente. 
@@ -8,6 +9,11 @@ import { listar } from '../controllers/chamado.controller.js'
 
 const router = express.Router();
 
+router.get('/buscar', buscar);
 router.get('/', listar);
+router.get('/:id', buscarPorId);
+router.post('/', validarChamado, criar);
+router.put('/:id', validarChamado, atualizar);
+router.delete('/:id', deletar);
 
 export default router; 

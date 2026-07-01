@@ -1,5 +1,6 @@
+import 'dotenv/config';
 import app from './src/app.js'
 
-app.listen(3000, () => {
-    console.log("API HelpDesk rodando em http://localhost:3000");
+app.listen(process.env.SERVER_PORT || 3000, () => {
+    console.log(`API HelpDesk rodando em http://localhost:${process.env.SERVER_PORT || 3000}` );
 })
