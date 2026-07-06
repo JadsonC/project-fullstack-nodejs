@@ -1,5 +1,5 @@
 import express from 'express';
-import { atualizar, buscar, buscarPorId, criar, deletar, listar } from '../controllers/chamado.controller.js'
+import { atualizar, buscar, buscarPorId, contarPorStatus, criar, deletar, listar } from '../controllers/chamado.controller.js'
 import { validarChamado } from '../middlewares/validarChamado.js';
 
 
@@ -10,6 +10,7 @@ import { validarChamado } from '../middlewares/validarChamado.js';
 const router = express.Router();
 
 router.get('/buscar', buscar);
+router.get('/contagem', contarPorStatus);
 router.get('/', listar);
 router.get('/:id', buscarPorId);
 router.post('/', validarChamado, criar);

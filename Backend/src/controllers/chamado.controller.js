@@ -139,5 +139,19 @@ export async function buscar(req, res, next) {
     } catch (err) {
         next(err);
     }
+}
 
+export async function contarPorStatus(req, res, next) {
+    try {
+        const resultado = await pool.query(
+            `SELECT status, COUNT(*) AS total
+            FROM chamados
+            GROUP BY status
+            `
+        );
+
+        res.json(resultado.rows)
+    } catch (err) {
+        next(err);
+    }
 }
