@@ -49,7 +49,7 @@ function renderizarChamados(chamados) {
                 </div>
                 <p class="mb-0">${chamado.descricao}</p>
                 <div class="mt-3">
-                    <button onclick="fecharChamado(${chamado.id})" class="btn btn-sm btn-outline-danger">
+                    <button onclick="fecharChamado(${chamado.id})" class="btn btn-sm btn-outline-danger acao-protegida">
                         Fechar Chamado
                     </button>
                 </div>
@@ -58,14 +58,29 @@ function renderizarChamados(chamados) {
 
         lista.appendChild(item)
     })
-
+    atualizarInterfaceLogin();
 }
 
 async function fecharChamado(id) {
     try {
         const resposta = await fetch(`${API_URL}/chamados/${id}`, {
             method: 'DELETE',
+            headers: {
+                'Autorization': `Bearer ${token}`
+            }
         });
+
+        if (resposta.status == 401) {
+            alert('Sua sessão expirou. Faça login novamente');
+            localStorage.removeItem('token');
+            window.location.href = 'login.html';
+            return;
+        }
+
+        if (resposta.status == 403) {
+            alert('Você não tem permissão para fechar este chamado.');
+            return;
+        }
 
         if (!resposta.ok) {
             alert('Erro ao fechar chamado.');
@@ -96,11 +111,11 @@ form.addEventListener('submit', async function (evento) {
 
     let valido = true;
 
-    camposObrigatorios.forEach(({ id, erroId}) => {
+    camposObrigatorios.forEach(({ id, erroId }) => {
         const campo = document.getElementById(id);
         const erro = document.getElementById(erroId);
 
-        if(!campo.value.trim()) {
+        if (!campo.value.trim()) {
             erro.style.display = 'block';
             valido = false;
         }
@@ -147,4 +162,23 @@ form.addEventListener('submit', async function (evento) {
 
 })
 
+function atualizarInterfaceLogin() {
+    const token = localStorage.getItem('token');
+    const estaLogado = !!token;
+
+    document.querySelectorAll('.acao-protegida').forEach(botao => {
+        botao.style.display = estaLogado ? 'inline-block' : 'none';
+    });
+
+    document.getElementById('link-login').style.display = estaLogado ? 'none' : 'inline-block';
+    document.getElementById('link-logout').style.display = estaLogado ? 'inline-block' : 'none';
+}
+
+document.getElementById('link-logout').addEventListener('click', function (evento) {
+    evento.preventDefault();
+    localStorage.removeItem('token');
+    atualizarInterfaceLogin();
+})
+
+atualizarInterfaceLogin();
 carregarChamados();
