@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.get('/buscar', buscar);
 router.get('/contagem', contarPorStatus);
-router.get('/', autenticar, listar);
+router.get('/', listar);
 router.get('/:id', buscarPorId);
 router.post('/', validarChamado, criar);
 

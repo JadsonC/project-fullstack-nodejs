@@ -1,11 +1,9 @@
-import pool from "../database/connection.js";
+import * as CategoriaModel from '../models/categoria.model.js'
 
 export async function listar(req, res, next) {
     try {
-        const resultado = await pool.query(
-            'SELECT * FROM categorias ORDER BY nome'
-        );
-        res.json(resultado.rows);
+        const categorias = await CategoriaModel.listarTodas();
+        res.json(categorias);
     } catch (err) {
         next(err);
     }
