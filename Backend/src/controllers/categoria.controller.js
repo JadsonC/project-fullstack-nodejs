@@ -6,5 +6,5 @@ export async function listar(req, res, next) {
         res.json(categorias);
     } catch (err) {
         next(err);
-    } 
+    }
 }
